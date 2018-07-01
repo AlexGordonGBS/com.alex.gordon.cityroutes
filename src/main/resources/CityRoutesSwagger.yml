@@ -1,0 +1,42 @@
+swagger: '2.0'
+info:
+  description: City Router - REST API. Calculates if there is an existing route between two cities.
+  version: 1.0.0
+  title: City Router
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: alex.gordon.gbs@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+- name: City Routes
+  description: City Router - REST API. Calculates if there is an existing route between two cities.
+paths:
+  /connected:
+    get:
+      tags:
+      - connected
+      summary: Find out is a route is available
+      description: Find out is a route is available
+      operationId: connected
+      produces:
+      - application/json
+      parameters:
+      - name: origin
+        in: query
+        description: City name at the start of the route.
+        required: true
+        type: string
+      - name: destination
+        in: query
+        description: City name at the end of the route.
+        required: true
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: string
+        400:
+          description: Invalid Request

@@ -1,1 +1,6 @@
-swagger.yml: CityRoutesSwagger.yml
+spring:
+  profiles:
+    active: local
+
+dataFileName: city.txt
+  

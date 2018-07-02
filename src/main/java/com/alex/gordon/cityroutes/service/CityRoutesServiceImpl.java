@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.alex.gordon.cityroutes.util.DataFileLoader;
 
 @Service
 public class CityRoutesServiceImpl implements CityRoutesService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(CityRoutesServiceImpl.class);
+
 	private List<String> citiesChecked = new ArrayList<>();
 
 	@Autowired
@@ -19,6 +23,7 @@ public class CityRoutesServiceImpl implements CityRoutesService {
 
 	@Override
 	public String connected(String origin, String destination) {
+		LOGGER.info(String.format("Received request for origin=%s and destination=%s", origin, destination));
 		String result;
 		String city1 = origin;
 		String city2 = destination;
@@ -39,6 +44,7 @@ public class CityRoutesServiceImpl implements CityRoutesService {
 		} else {
 			result = "no";
 		}
+		LOGGER.info(String.format("Processed request for origin=%s and destination=%s with result=%s", origin, destination, result));
 		return result;
 	}
 

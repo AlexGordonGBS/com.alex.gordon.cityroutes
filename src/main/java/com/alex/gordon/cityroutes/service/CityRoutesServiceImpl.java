@@ -32,6 +32,7 @@ public class CityRoutesServiceImpl implements CityRoutesService {
 			Map<String, Set<String>> routes = null;
 			try {
 				routes = dataLoader.buildRoutesMap();
+				LOGGER.info(String.format("routes=%s", routes));
 			} catch (Exception e) {
 				// never?
 				// TODO build exception hierarchy for the project and exception handler aspect!!!!!!!!

@@ -2,7 +2,6 @@ package com.alex.gordon.cityroutes.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,23 +10,19 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataFileLoader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DataFileLoader.class);
 
-	// TODO @value does NOT work!!!!! to fix later!!!!
-	// @Value("${dataFileName:unknownFile}")
-	private String fileName = "/city.txt";
+	@Value("${dataFileName:unknownFile}")
+	private String fileName;
 
-	public Map<String, Set<String>> buildRoutesMap() throws Exception {
+	public Map<String, Set<String>> buildRoutesMap() {
 		Map<String, Set<String>> routes = new HashMap<>();
-		// TODO convert inot one line later!!!
-		Class clazz = DataFileLoader.class;
-		InputStream inputStream = clazz.getResourceAsStream(fileName);
-		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-
+		BufferedReader br = new BufferedReader(new InputStreamReader(DataFileLoader.class.getResourceAsStream(fileName)));
 		try {
 			if (br.ready()) {
 				String line;
@@ -39,6 +34,7 @@ public class DataFileLoader {
 						if (cities.length == 2) {
 							String city1 = cities[0].trim();
 							String city2 = cities[1].trim();
+							// adding the routes in both directions - city1 <--> city2 !!
 							addCityToMap(routes, city1, city2);
 							addCityToMap(routes, city2, city1);
 						}
@@ -48,7 +44,7 @@ public class DataFileLoader {
 			return routes;
 		} catch (IOException e) {
 			LOGGER.error("Can not read file " + fileName);
-			throw new Exception("Can not read file " + fileName);
+			throw new RuntimeException("Can not read file " + fileName);
 		} finally {
 			try {
 				br.close();

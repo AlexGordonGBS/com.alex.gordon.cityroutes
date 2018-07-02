@@ -22,12 +22,17 @@ public class CityRoutesServiceImpl implements CityRoutesService {
 		String result;
 		String city1 = origin;
 		String city2 = destination;
+		if (city1.equals(city2)) {
+			// TODO constant class create!!!
+			return "yes";
+		}
 		Map<String, Set<String>> routes = null;
 		try {
 			routes = dataLoader.buildRoutesMap();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// never? 
+			// TODO build exception hierarchy for the project and exception handler aspect!!!!!!!!
+			throw new RuntimeException("BAD ERROR! Could not build the routes map!");
 		}
 		if (routeExists(city1, city2, routes)) {
 			result = "yes";

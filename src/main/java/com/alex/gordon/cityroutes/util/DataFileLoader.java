@@ -1,8 +1,6 @@
 package com.alex.gordon.cityroutes.util;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,36 +17,17 @@ import org.springframework.stereotype.Component;
 public class DataFileLoader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DataFileLoader.class);
 
-	// TODO @value does NOT work!!!!!
-	//@Value("${dataFileName:unknownFile}")
+	// TODO @value does NOT work!!!!! to fix later!!!!
+	// @Value("${dataFileName:unknownFile}")
 	private String fileName = "/city.txt";
-/*
-	@Test
-	public void givenFileNameAsAbsolutePath_whenUsingClasspath_thenFileData() {
-	    String expectedData = "Hello World from fileTest.txt!!!";
-	     
-	    Class clazz = FileOperationsTest.class;
-	    InputStream inputStream = clazz.getResourceAsStream("/fileTest.txt");
-	    String data = readFromInputStream(inputStream);
-	 
-	    Assert.assertThat(data, containsString(expectedData));
-	}
-*/	
-	
+
 	public Map<String, Set<String>> buildRoutesMap() throws Exception {
 		Map<String, Set<String>> routes = new HashMap<>();
-    Class clazz = DataFileLoader.class;
-    InputStream inputStream = clazz.getResourceAsStream(fileName);
-//		FileReader file = inputStream.`
-//		try {
-//			file = new FileReader(fileName);
-//		} catch (FileNotFoundException e) {
-//			LOGGER.error("Data file not found");
-//			throw new Exception("Data file not found: " + fileName);
-//		}
-//		BufferedReader bufferedReader = new BufferedReader(file);
+		// TODO convert inot one line later!!!
+		Class clazz = DataFileLoader.class;
+		InputStream inputStream = clazz.getResourceAsStream(fileName);
 		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-		
+
 		try {
 			if (br.ready()) {
 				String line;

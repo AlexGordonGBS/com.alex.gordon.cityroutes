@@ -64,11 +64,10 @@ Text file city.txt contains data. This data is intentionally made "dirty" - some
 * Program reads the city.txt file line by line and populates a Map<String, Set<Strng>> which has a key as one city name and as value it has a Set of all cities connected to the "key-city" by a route.
 * Here is data example in the Map:
 
-    -------------------------------------
-    Key          |      Set
-    -------------------------------------
-    Boston       |     New York, Newark
-    New York     |     Boston
+   | Key          |      Set               |
+   | :------------|:---------------------- |
+   | Boston       |     New York, Newark   |
+   | New York     |     Boston             |
 
 - I am using Set (not a List) to avoid duplicates. Java Set silently ignores duplicates - very convenient in this case.
 - Then I look up the first key-city in the key set of the Map and recursively lookup all the cities in the set.

@@ -90,7 +90,7 @@ Text file city.txt contains data. This data is intentionally made "dirty" - some
         `cd com.alex.gordon.cityroutes/`
   * run project build:
        `mvn clean install`
-  * navigate to thetarget directory:
+  * navigate to the target directory:
         `cd target/`
   * run SpringBoot program
        `java -jar com.alex.gordon.cityroutes-0.0.1-SNAPSHOT.jar`
@@ -101,11 +101,14 @@ Text file city.txt contains data. This data is intentionally made "dirty" - some
 # Manual Testing
 Colons can be used to align columns.
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Test Case #   | Origin        | Destination  |  Expected  result  |  Actual Result |
+| ------------- |:-------------:| ------------:|:------------------:|:--------------:|
+| 1             | Boston        | New York     | Yes                | Yes            |
+| 1             | Boston        | New York     | Yes                | Yes            |
+| 1             | Boston        | New York     | Yes                | Yes            |
+| 1             | Boston        | New York     | Yes                | Yes            |
+| 1             | Boston        | New York     | Yes                | Yes            |
+
   
   
   

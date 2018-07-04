@@ -17,14 +17,28 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.alex.gordon.cityroutes.util.DataFileLoader;
 
 @RunWith(MockitoJUnitRunner.class)
+/**
+ * <p> Test class example for servie class </p>
+ * @author Alex Gordon
+ *
+ */
 public class CityRoutesServiceImplTest {
 
 	@Mock
+	/**
+	 * Mock object for the loader utility class
+	 */
 	DataFileLoader loader;
 
 	@InjectMocks
+	/**
+	 * to injects mock beans into the service bean
+	 */
 	CityRoutesService service = new CityRoutesServiceImpl();
 
+	/**
+	 * test method for the service layer for one particular test case when the route does exist
+	 */
 	@Test
 	public void connectedTest1() {
 		Map<String, Set<String>> map = new HashMap<>();

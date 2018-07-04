@@ -14,9 +14,30 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+/**
+ * <p>
+ * DataFileLoader class
+ * </p>
+ * <p>
+ * This utility class is use to load application data from the data source - in this example it is
+ * just a text file.
+ * </p>
+ * <p>
+ * While reading the data source we also building the "in-memory" Map to keep the data for the
+ * application.
+ * </p>
+ * <p>
+ * The "in-memory" map has the type of Map<String, Set<String>>. The Map key is the name of a city
+ * and the map value is the Set of all the cities the key-city has a route to
+ * </p>
+ * 
+ * @author Alex Gordon
+ *
+ */
 public class DataFileLoader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DataFileLoader.class);
 
+	// loads the config variable from the the properties file - application.yml.
 	@Value("${dataFileName:unknownFile}")
 	private String fileName;
 

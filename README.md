@@ -73,6 +73,7 @@ Text file city.txt contains data. This data is intentionally made "dirty" - some
 - Then I look up the first key-city in the key set of the Map and recursively lookup all the cities in the set.
 - While doing this I keep a Set of cities which have been searched for already to avoid cycles and endless loops.
 - Finally, I either find a match and report back a result "yes" or do not have match or get an error - in this case the result is "no" as specified in the requirements.
+- a city name is case-sensitive: boston and Boston are two **different** cities
 
 # How to build and run the service
 * Prerequisites:
@@ -98,15 +99,22 @@ Text file city.txt contains data. This data is intentionally made "dirty" - some
   * enjoy playing with the service
   
 # Manual Testing
-Colons can be used to align columns.
 
 | Test Case #   | Origin        | Destination  |  Expected  result  |  Actual Result |
 | ------------- |:-------------:| ------------:|:------------------:|:--------------:|
-| 1             | Boston        | New York     | Yes                | Yes            |
-| 1             | Boston        | New York     | Yes                | Yes            |
-| 1             | Boston        | New York     | Yes                | Yes            |
-| 1             | Boston        | New York     | Yes                | Yes            |
-| 1             | Boston        | New York     | Yes                | Yes            |
+| 1             | Boston        | Boston       |  yes               |     yes        |
+| 1a            | Boston        | boston       |  no                |     no         |
+| 2             | Boston        | New York     |  yes               |     yes        |
+| 3             | New York      | Boston       |  yes               |     yes        |
+| 4             | Boston        | Newark       |  yes               |     yes        |
+| 5             | Boston        | a            |  no                |     no         |
+| 6             |               | New York     |  no                |     no         |
+| 7             | Boston        |              |  no                |     no         |
+| 8             | Trenton       | New York     |  no                |     no         |
+| 9             | Trenton       | Albany       |  yes               |     yes        |
+| 10            | a             | d            |  yes               |     yes        |
+| 11            | f             | c            |  yes               |     yes        |
+| 12            | dfsdfsdf      |              |  no                |     no         |
 
   
   
@@ -115,4 +123,6 @@ Alex Gordon 07/02/2018
        
      
      
+ 
+
  

@@ -24,11 +24,11 @@ import org.springframework.stereotype.Component;
  * </p>
  * <p>
  * While reading the data source we also building the "in-memory" Map to keep the data for the
- * application.
+ * application
  * </p>
  * <p>
  * The "in-memory" map has the type of Map<String, Set<String>>. The Map key is the name of a city
- * and the map value is the Set of all the cities the key-city has a route to
+ * and the map value is the Set of all the cities the key-city has a route to 
  * </p>
  * 
  * @author Alex Gordon
